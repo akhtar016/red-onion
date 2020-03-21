@@ -16,20 +16,26 @@
     background-size: cover;
     background-image: url("https://res.cloudinary.com/dllb2cjw6/image/upload/v1584737490/bannerbackground_soll8g.png") ;
     background-repeat: no-repeat;
-    height: 450px;
-    background-origin: content-box;
+    height: 525px;
+    background-position: center center;
     
     
    }
 
-   .input{
-        width: 45%;
-        height: 35px;
-        padding: 6px 12px;
-        font-size: 16px;
-        font-weight: 400;
-        margin-bottom: 2px;
-        border:5px;
-        margin-top: 5px;
-        
-   }
+.search-box{
+    position: relative;
+}
+.search-btn{
+    top:0;
+    position: absolute;
+    right: 15px;
+    height: 100%;
+    border-radius:20px;
+    size: 20px;
+
+}
+.form-control{
+    border-radius: 25px;
+    border:none;
+    padding-left: 25px;
+}

@@ -28,28 +28,28 @@ const Navbar = () => {
             >
               Login
             </button>
-            <button className="rounded-pill btn btn-danger">Sign up</button>
+            <button className="btn btn-danger rounded-pill">Sign up</button>
           </div>
         </nav>
       </div>
 
-      <div className="banner d-flex justify-content-center align-items-center">
-          
-          <div>
+      <section className="banner d-flex text-center align-items-center">
+        <div className="container">
           <h1>Best food waiting for your belly</h1>
-          <input type="text" className="input" placeholder="Search food items"/>
-          <button className="btn btn-danger rounded-top">Search</button>
-          
+          <div className="search-box col-md-6 my-5 mx-auto">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search food items"
+          />
+          <button className="btn btn-danger search-btn btn-rounded">Search</button>
+
+
           </div>
-
-
           
-         
-        
-      </div>
-
-      
-      
+          
+        </div>
+      </section>
     </div>
   );
 };
