@@ -5,9 +5,10 @@ import "./AllFoods.css"
 const AllFoods = () => {
 
 
-  const allFoods = [
+   const allFoods = [
     {
       name: "Bagel and cream cheese",
+      id:'1',
       price: "6.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584751116/breakfast5_dqnrkr.png",
@@ -15,6 +16,7 @@ const AllFoods = () => {
     },
     {
       name: "Breakfast sandwich",
+      id:'2',
       price: "9.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584751113/breakfast2_bewi0v.png",
@@ -22,6 +24,7 @@ const AllFoods = () => {
     },
     {
       name: "Baked Chicken",
+      id:'3',
       price: "10.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584751112/breakfast3_bstvjs.png",
@@ -29,6 +32,7 @@ const AllFoods = () => {
     },
     {
       name: "Eggs Benedict",
+      id:'4',
       price: "8.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584751109/breakfast1_tbipxs.png",
@@ -36,6 +40,7 @@ const AllFoods = () => {
     },
     {
       name: "Toast Croissant Fried egg",
+      id:'5',
       price: "19.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584751119/breakfast6_jiao3t.png",
@@ -43,6 +48,7 @@ const AllFoods = () => {
     },
     {
       name: "Full Breakfast Fried Egg Toast Brunch",
+      id:'6',
       price: "3.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584751116/breakfast5_dqnrkr.png",
@@ -50,6 +56,7 @@ const AllFoods = () => {
     },
     {
       name: "Healthy Meal Plan",
+      id:'7',
       price: "23.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584749557/lunch6_i0yfuf.png",
@@ -57,6 +64,7 @@ const AllFoods = () => {
     },
     {
       name: "Fried Chicken Bento",
+      id:'8',
       price: "9.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584749555/lunch5_yrdorm.png",
@@ -64,6 +72,7 @@ const AllFoods = () => {
     },
     {
       name: "Tarragon-Rubbed-Salmon",
+      id:'9',
       price: "6.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584749554/lunch3_sbfkv7.png",
@@ -71,6 +80,7 @@ const AllFoods = () => {
     },
     {
       name: "Indian Lunch",
+      id:'10',
       price: "8.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584749555/lunch4_tug8hl.png",
@@ -78,6 +88,7 @@ const AllFoods = () => {
     },
     {
       name: "Beef Steak",
+      id:'11',
       price: "15.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584749553/lunch1_ktv6ak.png",
@@ -85,6 +96,7 @@ const AllFoods = () => {
     },
     {
       name: "Honey Soy Glazed Salmon with Peppers",
+      id:'12',
       price: "7.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584749554/lunch2_qdqtqi.png",
@@ -93,6 +105,7 @@ const AllFoods = () => {
   
     {
       name: "Salmon with Grapefruit and Lentil Salad",
+      id:'13',
       price: "9.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584752102/dinner6_o8eotn.png",
@@ -100,6 +113,7 @@ const AllFoods = () => {
     },
     {
       name: "Lemony Salmon Piccata",
+      id:'14',
       price: "10.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584752104/dinner2_rmlpov.png",
@@ -107,6 +121,7 @@ const AllFoods = () => {
     },
     {
       name: "Pork Tenderloin with Quinoa Pilaf",
+      id:'15',
       price: "12.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584752098/dinner5_d8atwz.png",
@@ -114,6 +129,7 @@ const AllFoods = () => {
     },
     {
       name: "French Fries with cheese",
+      id:'16',
       price: "8.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584752105/dinner4_sdl25c.png",
@@ -121,6 +137,7 @@ const AllFoods = () => {
     },
     {
       name: "Garlic Butter Baked Salmon",
+      id:'17',
       price: "6.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584752097/dinner3_ji1kzy.png",
@@ -128,6 +145,7 @@ const AllFoods = () => {
     },
     {
       name: "Baked Chicken",
+      id:'18',
       price: "9.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584752099/dinner1_aqmcmu.png",
@@ -135,9 +153,11 @@ const AllFoods = () => {
     }
   ];
 
+  allFoods.sort(function() { return 0.5 - Math.random() });
+
   const [foodType, setFoodType] = useState('Lunch');
 
-  const selectedFoods = allFoods.filter (food => food.type == foodType)
+  const selectedFoods = allFoods.filter (food => food.type === foodType)
 
   return (
     <section className="food-area my-5">
@@ -145,13 +165,13 @@ const AllFoods = () => {
           <nav>
               <ul className="nav justify-content-center">
                   <li onClick={() => setFoodType("Breakfast")} className="nav-item">
-                      <span to="Breakfast" className={foodType === "Breakfast" ? "active nav-link" : "nav-link"}>Breakfast</span>
+                      <span className={foodType === "Breakfast" ? "active nav-link" : "nav-link"}>Breakfast</span>
                     </li>
                   <li onClick={() => setFoodType("Lunch")} className="nav-item">
-                      <span to="Breakfast" className={foodType === "Lunch" ? "active nav-link" : "nav-link"}>Lunch</span>
+                      <span className={foodType === "Lunch" ? "active nav-link" : "nav-link"}>Lunch</span>
                       </li>
                   <li onClick={() => setFoodType("Dinner")}className="nav-item">
-                      <span to="Breakfast" className={foodType === "Dinner" ? "active nav-link" : "nav-link"}>Dinner</span>
+                      <span className={foodType === "Dinner" ? "active nav-link" : "nav-link"}>Dinner</span>
                       </li>
                   
               </ul>
