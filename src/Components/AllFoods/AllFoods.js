@@ -8,7 +8,7 @@ const AllFoods = () => {
    const allFoods = [
     {
       name: "Bagel and cream cheese",
-      id:'1',
+      key:'bagel-and-cream-cheese',
       price: "6.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584751116/breakfast5_dqnrkr.png",
@@ -16,7 +16,7 @@ const AllFoods = () => {
     },
     {
       name: "Breakfast sandwich",
-      id:'2',
+      key:'breakfast-sandwich',
       price: "9.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584751113/breakfast2_bewi0v.png",
@@ -24,7 +24,7 @@ const AllFoods = () => {
     },
     {
       name: "Baked Chicken",
-      id:'3',
+      key:'baked-chicken',
       price: "10.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584751112/breakfast3_bstvjs.png",
@@ -32,7 +32,7 @@ const AllFoods = () => {
     },
     {
       name: "Eggs Benedict",
-      id:'4',
+      key:'eggs-benedict',
       price: "8.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584751109/breakfast1_tbipxs.png",
@@ -40,7 +40,7 @@ const AllFoods = () => {
     },
     {
       name: "Toast Croissant Fried egg",
-      id:'5',
+      key:'toast-croissant-fried-egg',
       price: "19.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584751119/breakfast6_jiao3t.png",
@@ -48,7 +48,7 @@ const AllFoods = () => {
     },
     {
       name: "Full Breakfast Fried Egg Toast Brunch",
-      id:'6',
+      key:'full-breakfast-fried-egg-toast-brunch',
       price: "3.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584751116/breakfast5_dqnrkr.png",
@@ -56,7 +56,7 @@ const AllFoods = () => {
     },
     {
       name: "Healthy Meal Plan",
-      id:'7',
+      key:'healthy-meal-plan',
       price: "23.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584749557/lunch6_i0yfuf.png",
@@ -64,15 +64,15 @@ const AllFoods = () => {
     },
     {
       name: "Fried Chicken Bento",
-      id:'8',
+      key:'fried-chicken-bento',
       price: "9.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584749555/lunch5_yrdorm.png",
         type:'Lunch'
     },
     {
-      name: "Tarragon-Rubbed-Salmon",
-      id:'9',
+      name: "Tarragon Rubbed Salmon",
+      key:'tarragon-rubbed-salmon',
       price: "6.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584749554/lunch3_sbfkv7.png",
@@ -80,7 +80,7 @@ const AllFoods = () => {
     },
     {
       name: "Indian Lunch",
-      id:'10',
+      key:'indian-lunch',
       price: "8.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584749555/lunch4_tug8hl.png",
@@ -88,7 +88,7 @@ const AllFoods = () => {
     },
     {
       name: "Beef Steak",
-      id:'11',
+      key:'beef-steak',
       price: "15.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584749553/lunch1_ktv6ak.png",
@@ -96,7 +96,7 @@ const AllFoods = () => {
     },
     {
       name: "Honey Soy Glazed Salmon with Peppers",
-      id:'12',
+      key:'honey-soy-glazed-salmon-with-peppers',
       price: "7.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584749554/lunch2_qdqtqi.png",
@@ -105,7 +105,7 @@ const AllFoods = () => {
   
     {
       name: "Salmon with Grapefruit and Lentil Salad",
-      id:'13',
+      key:'salmon-with-grapefruit-and-lentil-salad',
       price: "9.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584752102/dinner6_o8eotn.png",
@@ -113,7 +113,7 @@ const AllFoods = () => {
     },
     {
       name: "Lemony Salmon Piccata",
-      id:'14',
+      key:'lemony-salmon-piccata',
       price: "10.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584752104/dinner2_rmlpov.png",
@@ -121,7 +121,7 @@ const AllFoods = () => {
     },
     {
       name: "Pork Tenderloin with Quinoa Pilaf",
-      id:'15',
+      key:'pork-tenderloin-with-quinoa-pilaf',
       price: "12.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584752098/dinner5_d8atwz.png",
@@ -129,7 +129,7 @@ const AllFoods = () => {
     },
     {
       name: "French Fries with cheese",
-      id:'16',
+      key:'french-fries-with-cheese',
       price: "8.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584752105/dinner4_sdl25c.png",
@@ -137,7 +137,7 @@ const AllFoods = () => {
     },
     {
       name: "Garlic Butter Baked Salmon",
-      id:'17',
+      key:'garlic-butter-baked-salmon',
       price: "6.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584752097/dinner3_ji1kzy.png",
@@ -145,7 +145,7 @@ const AllFoods = () => {
     },
     {
       name: "Baked Chicken",
-      id:'18',
+      key:'baked-chicken',
       price: "9.99",
       imgLink:
         "https://res.cloudinary.com/dllb2cjw6/image/upload/v1584752099/dinner1_aqmcmu.png",

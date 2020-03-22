@@ -34,3 +34,11 @@
     box-shadow: 0px 5px 13px 5px whitesmoke;
     cursor: pointer;
 }
+
+.food-area div>a:hover{
+    text-decoration: none;
+}
+
+.food-area div>a{
+    color: black;
+}
