@@ -5,15 +5,11 @@
     size: 100%;
 }
 
-.container{
 
-    margin-bottom: 20px;
-
+.nav-item{
+    margin-left: 20px;
 }
 
-.loginButton{
-    
-    text-decoration: none;
-    
-}
+
+
 
