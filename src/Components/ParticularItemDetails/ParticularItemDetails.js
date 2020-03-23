@@ -15,6 +15,8 @@ const ParticularItemDetails = () => {
 
   const [quantity, setQuantity] = useState(1);
 
+ 
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-white container">
@@ -44,8 +46,10 @@ const ParticularItemDetails = () => {
                 <button
                   class="btn btn-default myBtn"
                   onClick={() => {
+                    
                     if (quantity > 1) {
                       setQuantity(quantity - 1);
+
                     }
                   }}
                 >
