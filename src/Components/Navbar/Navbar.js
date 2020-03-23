@@ -28,7 +28,7 @@ const Navbar = () => {
             <Link to="/checkout">
 
             <button className="btn btn-link text-secondary text-dark">
-              <FontAwesomeIcon icon={faCartPlus} />
+              <FontAwesomeIcon icon={faCartPlus}/> 0
             </button>
             
             </Link>
@@ -40,7 +40,7 @@ const Navbar = () => {
 
             <button
               type="button"
-              className="btn btn-link text-secondary text-dark"
+              className="btn btn-link text-secondary text-dark loginButton"
             >
               Login
             </button>

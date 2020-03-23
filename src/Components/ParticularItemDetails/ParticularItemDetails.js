@@ -8,18 +8,23 @@ import {
   faMinus
 } from "@fortawesome/free-solid-svg-icons";
 import "./ParticularItemDetails.css";
+import { Nav } from "react-bootstrap";
+import Navbar from "../Navbar/Navbar";
 
-const ParticularItemDetails = () => {
+const ParticularItemDetails = (props) => {
   const { key } = useParams();
   const food = foods.find(fd => fd.key === key);
 
   const [quantity, setQuantity] = useState(1);
 
  
+  
+
+ 
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-white container">
+      {/*<nav className="navbar navbar-expand-lg navbar-light bg-white container">
         <Link to="/">
           <img
             src="https://res.cloudinary.com/dllb2cjw6/image/upload/v1584737489/logo2_ikwqnv.png"
@@ -27,7 +32,9 @@ const ParticularItemDetails = () => {
             height="50px"
           />
         </Link>
-      </nav>
+  </nav>*/}
+
+      <Navbar></Navbar>
 
       <div className="food-details my-5 container">
         <div className="row">
@@ -66,7 +73,7 @@ const ParticularItemDetails = () => {
                 </button>
               </div>
             </div>
-            <button className="btn btn-danger btn-rounded mb-2">
+            <button  className="btn btn-danger rounded-pill mb-2">
               <FontAwesomeIcon icon={faCartArrowDown} /> Add
             </button>
           </div>

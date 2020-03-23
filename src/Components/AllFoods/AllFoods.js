@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FoodItem from "../FoodItem/FoodItem";
 import "./AllFoods.css"
 
@@ -156,6 +156,10 @@ const AllFoods = () => {
   allFoods.sort(function() { return 0.5 - Math.random() });
 
   const [foodType, setFoodType] = useState('Lunch');
+
+  
+
+ 
 
   const selectedFoods = allFoods.filter (food => food.type === foodType)
 
