@@ -38,7 +38,7 @@ const Login = () => {
 
         <div >
          
-            <a id="textSignUp" className="d-flex justify-content-center" href="/signup">Create an account</a>
+            <Link id="textSignUp" className="d-flex justify-content-center" to="/signup">Create an account</Link>
           
         </div>
       </div>

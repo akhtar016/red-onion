@@ -9,6 +9,8 @@ import SignUp from "./Components/SignUp/SignUp";
 import NotFound from "./Components/NotFound/NotFound";
 import ParticularItemDetails from "./Components/ParticularItemDetails/ParticularItemDetails";
 import TopBanner from "./Components/TopBanner/TopBanner";
+import { Nav } from "react-bootstrap";
+
 
 
 
@@ -35,9 +37,6 @@ function App() {
           </Route>
 
           <Route path="/food/:key">
-          
-
-           
             <ParticularItemDetails></ParticularItemDetails>
 
           </Route>

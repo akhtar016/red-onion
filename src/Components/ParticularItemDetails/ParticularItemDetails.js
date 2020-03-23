@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import foods from "../../Data/food.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,19 +8,17 @@ import {
   faMinus
 } from "@fortawesome/free-solid-svg-icons";
 import "./ParticularItemDetails.css";
-import { Nav } from "react-bootstrap";
 import Navbar from "../Navbar/Navbar";
 
-const ParticularItemDetails = (props) => {
+const ParticularItemDetails = () => {
+
   const { key } = useParams();
   const food = foods.find(fd => fd.key === key);
 
   const [quantity, setQuantity] = useState(1);
 
- 
   
 
- 
 
   return (
     <div>
@@ -34,7 +32,11 @@ const ParticularItemDetails = (props) => {
         </Link>
   </nav>*/}
 
+
+      <div className="navOnProductDetails">
+
       <Navbar></Navbar>
+      </div>
 
       <div className="food-details my-5 container">
         <div className="row">
@@ -73,7 +75,7 @@ const ParticularItemDetails = (props) => {
                 </button>
               </div>
             </div>
-            <button  className="btn btn-danger rounded-pill mb-2">
+            <button onClick={() => console.log("Item is added")}  className="btn btn-danger rounded-pill mb-2">
               <FontAwesomeIcon icon={faCartArrowDown} /> Add
             </button>
           </div>

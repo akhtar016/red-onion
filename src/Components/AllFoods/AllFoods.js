@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import FoodItem from "../FoodItem/FoodItem";
 import "./AllFoods.css"
 
 const AllFoods = () => {
+
+
+    /** I have used both like array and data from data folder which is in json format */
 
 
    const allFoods = [

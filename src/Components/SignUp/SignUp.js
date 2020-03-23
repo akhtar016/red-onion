@@ -5,56 +5,132 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from "../../firebase.config";
 import GoogleButton from "react-google-button";
-import { Nav } from "react-bootstrap";
+import { Field } from 'reactjs-input-validator';
+
+
 
 firebase.initializeApp(firebaseConfig);
 
-const SignUp = (props) => {
-
-
-  const [user,setUser] = useState({
+const SignUp = () => {
+  const [user, setUser] = useState({
     isSignedIn: false,
     name: "",
-    email:'',
-    photoURL:""
-  })
+    email: "",
+    photoURL: ""
+  });
 
+  // login with google starts
 
   const provider = new firebase.auth.GoogleAuthProvider();
 
-
   const handleSignIn = () => {
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(result => {
+        const { displayName, photoURL, email } = result.user;
 
-    firebase.auth().signInWithPopup(provider)
-    .then(result =>{
+        const signInUser = {
+          isSignedIn: true,
+          name: displayName,
+          email: email,
+          photo: photoURL
+        };
 
-      const {displayName,photoURL, email} = result.user;
+        setUser(signInUser);
+        console.log(displayName, email, photoURL);
+      })
+      .catch(error => {
+        console.log(error);
+        console.log(error.message);
+      });
 
-      const signInUser = {
-        isSignedIn: true,
-        name: displayName,
-        email: email,
-        photo: photoURL
-      }
+    console.log("Google Button is Clicked");
+  };
 
-      setUser(signInUser);
-      console.log(displayName,email,photoURL)
+  const handleSignOut = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(response => {
+        const signOutUser = {
+          isSignedIn: false,
+          name: "",
+          photo: "",
+          email: "",
+          password:'',
+          isValid:"false",
+          error:""
+        };
 
-    })
-    .catch(error =>{
-      console.log(error)
-      console.log(error.message)
-    })
+        setUser(signOutUser);
+      })
+      .catch(error => {});
+  };
 
-    console.log("Google Button is Clicked")
+  //create account through input
+
+  const createAccount = (event) => {
+
+    if(user.isValid){
+
+      firebase.auth().createUserWithEmailAndPassword(user.email,user.password)
+      .then(res=>{
+       
+        const createdUser = {...user};
+        createdUser.isSignedIn = true;
+        createdUser.error = ""
+        setUser(createdUser);
+        console.log(res);
+      })
+      .catch(error =>{
+        console.log(error);
+        const createdUser = {...user};
+        createdUser.isSignedIn = false;
+        createdUser.error = error.message;
+        setUser(createdUser);
+      })
+
+    }
+    else{
+      console.log("form is not valid",user);
+    }
+
+    event.preventDefault();
+    event.target.reset();
+    
+  };
 
 
-  }
+  const is_valid_email = email => /(.+)@(.+){2,}\.(.+){2,}/.test(email);
+  const hasNumber = input => /\d/.test(input);
 
-  const createAccount = () => {};
 
   const handleChange = event => {
-    
+
+    const newUserInfo = {
+      ...user
+    };
+
+    //perform validation
+
+    let isValid = true;
+
+    if(event.target.email === "email"){
+      isValid = is_valid_email(event.target.value);
+    }
+    if (event.target.name === "password"){
+      isValid = event.target.value.length >=8 && hasNumber(event.target.value) ; 
+      
+    }else{
+      
+    }
+
+
+    newUserInfo[event.target.name] = event.target.value;
+
+    newUserInfo.isValid = isValid
+        setUser(newUserInfo);
   };
 
   return (
@@ -67,10 +143,12 @@ const SignUp = (props) => {
           />
         </div>
 
-        <form action="" className="text-center">
+        <form onSubmit={createAccount} className="text-center">
+          
           <input
+            required
             type="text"
-            onChange={handleChange}
+            onBlur={handleChange}
             name="name"
             id="email"
             placeholder="Name"
@@ -78,6 +156,8 @@ const SignUp = (props) => {
           />
           <br />
           <input
+            onBlur={handleChange}
+            required
             type="email"
             name="email"
             id="email"
@@ -86,22 +166,29 @@ const SignUp = (props) => {
           />
           <br />
           <input
+            onBlur={handleChange}
             type="password"
             name="password"
             id="password"
             placeholder="Password"
             className="input"
+            required
           />
           <br />
+
+
           <input
+            onBlur={handleChange}
             type="password"
             name="password"
-            id="password"
+            id="confirm_password"
             placeholder="Confirm Password"
             className="input"
+            required
           />
           <br />
-          <button onClick={createAccount} className="btn btn-danger myButton">
+  
+          <button type="submit" className="btn btn-danger myButton">
             Sign Up
           </button>
         </form>
@@ -110,30 +197,21 @@ const SignUp = (props) => {
           <Link to="/login">
             <p>Already have an account</p>
           </Link>
-          </div>
+        </div>
 
-          <div className="d-flex justify-content-center">
-            
-          <GoogleButton
-            onClick={handleSignIn}
-          />
+        <div className="d-flex justify-content-center">
+          <GoogleButton onClick={handleSignIn} />
 
-          <div>
+          <div>{user.isSignedIn && <Redirect to="/"></Redirect>}</div>
+        </div>
+        <div className="d-flex justify-content-center">
 
-          {
-            user.isSignedIn && 
+        {
+          user.error && <p style={{color:'red'}}>{user.error}</p>
+        }
 
-            <Redirect to="/"></Redirect>
-             
-            
-          }
-          </div>
-          
-        
-
-          </div>
-
-        
+        </div>
+       
       </div>
     </div>
   );
