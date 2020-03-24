@@ -18,7 +18,7 @@
     "react-google-button": "^0.7.0",
     "react-masonry-component": "^6.2.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0",
+    "react-scripts": "3.4.1",
     "reactjs-input-validator": "^0.16.4",
     "reactjs-popup": "^1.5.0"
   },

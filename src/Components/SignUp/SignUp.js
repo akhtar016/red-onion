@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import "./SignUp.css";
-import * as firebase from "firebase/app";
 import "firebase/auth";
-import firebaseConfig from "../../firebase.config";
 import GoogleButton from "react-google-button";
-import { Field } from 'reactjs-input-validator';
 
 
 
-firebase.initializeApp(firebaseConfig);
+
+//firebase.initializeApp(firebaseConfig);
 
 const SignUp = () => {
   const [user, setUser] = useState({
@@ -21,83 +19,83 @@ const SignUp = () => {
 
   // login with google starts
 
-  const provider = new firebase.auth.GoogleAuthProvider();
+  //const provider = new firebase.auth.GoogleAuthProvider();
 
   const handleSignIn = () => {
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then(result => {
-        const { displayName, photoURL, email } = result.user;
+    // firebase
+    //   .auth()
+    //   .signInWithPopup(provider)
+    //   .then(result => {
+    //     const { displayName, photoURL, email } = result.user;
 
-        const signInUser = {
-          isSignedIn: true,
-          name: displayName,
-          email: email,
-          photo: photoURL
-        };
+    //     const signInUser = {
+    //       isSignedIn: true,
+    //       name: displayName,
+    //       email: email,
+    //       photo: photoURL
+    //     };
 
-        setUser(signInUser);
-        console.log(displayName, email, photoURL);
-      })
-      .catch(error => {
-        console.log(error);
-        console.log(error.message);
-      });
+    //     setUser(signInUser);
+    //     console.log(displayName, email, photoURL);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //     console.log(error.message);
+    //   });
 
-    console.log("Google Button is Clicked");
+    // console.log("Google Button is Clicked");
   };
 
   const handleSignOut = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(response => {
-        const signOutUser = {
-          isSignedIn: false,
-          name: "",
-          photo: "",
-          email: "",
-          password:'',
-          isValid:"false",
-          error:""
-        };
+    // firebase
+    //   .auth()
+    //   .signOut()
+    //   .then(response => {
+    //     const signOutUser = {
+    //       isSignedIn: false,
+    //       name: "",
+    //       photo: "",
+    //       email: "",
+    //       password:'',
+    //       isValid:"false",
+    //       error:""
+    //     };
 
-        setUser(signOutUser);
-      })
-      .catch(error => {});
+    //     setUser(signOutUser);
+    //   })
+    //   .catch(error => {});
   };
 
   //create account through input
 
   const createAccount = (event) => {
 
-    if(user.isValid){
+    // if(user.isValid){
 
-      firebase.auth().createUserWithEmailAndPassword(user.email,user.password)
-      .then(res=>{
+    //   firebase.auth().createUserWithEmailAndPassword(user.email,user.password)
+    //   .then(res=>{
        
-        const createdUser = {...user};
-        createdUser.isSignedIn = true;
-        createdUser.error = ""
-        setUser(createdUser);
-        console.log(res);
-      })
-      .catch(error =>{
-        console.log(error);
-        const createdUser = {...user};
-        createdUser.isSignedIn = false;
-        createdUser.error = error.message;
-        setUser(createdUser);
-      })
+    //     const createdUser = {...user};
+    //     createdUser.isSignedIn = true;
+    //     createdUser.error = ""
+    //     setUser(createdUser);
+    //     console.log(res);
+    //   })
+    //   .catch(error =>{
+    //     console.log(error);
+    //     const createdUser = {...user};
+    //     createdUser.isSignedIn = false;
+    //     createdUser.error = error.message;
+    //     setUser(createdUser);
+    //   })
 
-    }
-    else{
-      console.log("form is not valid",user);
-    }
+    // }
+    // else{
+    //   console.log("form is not valid",user);
+    // }
 
-    event.preventDefault();
-    event.target.reset();
+    // event.preventDefault();
+    // event.target.reset();
     
   };
 
