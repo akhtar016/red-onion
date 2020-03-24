@@ -4,13 +4,18 @@ import "./SignUp.css";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import GoogleButton from "react-google-button";
-import firebaseConfig from "../../firebase.config";
+import Auth from "../Login/use.auth";
+
 
 // Initialize Firebase
 
-firebase.initializeApp(firebaseConfig);
+
 
 const SignUp = () => {
+
+   const auth = Auth();
+   console.log(auth.signInWithGoogle);
+
   const [user, setUser] = useState({
     isSignedIn: false,
     name: "",
@@ -20,32 +25,32 @@ const SignUp = () => {
 
   // login with google starts
 
-  const provider = new firebase.auth.GoogleAuthProvider();
+  // const provider = new firebase.auth.GoogleAuthProvider();
 
-  const handleSignIn = () => {
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then(result => {
-        const { displayName, photoURL, email } = result.user;
+  // const handleSignIn = () => {
+  //   firebase
+  //     .auth()
+  //     .signInWithPopup(provider)
+  //     .then(result => {
+  //       const { displayName, photoURL, email } = result.user;
 
-        const signInUser = {
-          isSignedIn: true,
-          name: displayName,
-          email: email,
-          photo: photoURL
-        };
+  //       const signInUser = {
+  //         isSignedIn: true,
+  //         name: displayName,
+  //         email: email,
+  //         photo: photoURL
+  //       };
 
-        setUser(signInUser);
-        console.log(displayName, email, photoURL);
-      })
-      .catch(error => {
-        console.log(error);
-        console.log(error.message);
-      });
+  //       setUser(signInUser);
+  //       console.log(displayName, email, photoURL);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //       console.log(error.message);
+  //     });
 
-    console.log("Google Button is Clicked");
-  };
+  //   console.log("Google Button is Clicked");
+  // };
 
   const handleSignOut = () => {
     firebase
@@ -122,6 +127,19 @@ const SignUp = () => {
     setUser(newUserInfo);
   };
 
+
+
+
+  const passMatch = () => {
+
+    const pass1 = document.getElementById("password").value;
+    const pass2 =  document.getElementById("confirm_password").value;
+    
+    if (pass1 !== pass2){
+      alert("Password should be same")
+    }
+  }
+
   return (
     <div className="sign-Up">
       <div className="container">
@@ -175,7 +193,7 @@ const SignUp = () => {
           />
           <br />
 
-          <button type="submit" className="btn btn-danger myButton">
+          <button type="submit" onClick={passMatch} className="btn btn-danger myButton">
             Sign Up
           </button>
         </form>
@@ -187,7 +205,13 @@ const SignUp = () => {
         </div>
 
         <div className="d-flex justify-content-center">
-          <GoogleButton onClick={handleSignIn} />
+
+          {
+                auth.user ? <p>user logged in </p> :
+                <GoogleButton onClick={auth.signInWithGoogle} />
+
+          }
+          
 
           <div>{user.isSignedIn && <Redirect to="/"></Redirect>}</div>
         </div>

@@ -1,11 +1,13 @@
-import React, { useReducer } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { auth } from "firebase";
 
 const Navbar = () => {
+
+  
   return (
     <nav className="navbar navbar-expand navbar-light bg-white py-2 fixed-top">
       <div className="container">
@@ -32,7 +34,10 @@ const Navbar = () => {
 
           <li className="nav-item">
             <Link to="/signup">
-              <button className="btn btn-danger rounded-pill">Sign up</button>
+              {     auth.user ? <button className="btn btn-danger rounded-pill">Sign up</button> : 
+                    <button className="btn btn-danger rounded-pill">Sign up</button>
+              }
+              
             </Link>
           </li>
         </ul>
