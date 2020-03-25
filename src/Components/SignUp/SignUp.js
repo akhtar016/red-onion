@@ -4,7 +4,7 @@ import "./SignUp.css";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import GoogleButton from "react-google-button";
-import Auth from "../Login/use.auth";
+import Auth from "../Login/useAuth";
 
 
 // Initialize Firebase
@@ -15,6 +15,16 @@ const SignUp = () => {
 
    const auth = Auth();
    console.log(auth.signInWithGoogle);
+
+
+
+
+
+
+
+
+
+   
 
   const [user, setUser] = useState({
     isSignedIn: false,
@@ -52,25 +62,25 @@ const SignUp = () => {
   //   console.log("Google Button is Clicked");
   // };
 
-  const handleSignOut = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(response => {
-        const signOutUser = {
-          isSignedIn: false,
-          name: "",
-          photo: "",
-          email: "",
-          password: "",
-          isValid: "false",
-          error: ""
-        };
+  // const handleSignOut = () => {
+  //   firebase
+  //     .auth()
+  //     .signOut()
+  //     .then(response => {
+  //       const signOutUser = {
+  //         isSignedIn: false,
+  //         name: "",
+  //         photo: "",
+  //         email: "",
+  //         password: "",
+  //         isValid: "false",
+  //         error: ""
+  //       };
 
-        setUser(signOutUser);
-      })
-      .catch(error => {});
-  };
+  //       setUser(signOutUser);
+  //     })
+  //     .catch(error => {});
+  // };
 
   //create account through input
 
@@ -207,13 +217,15 @@ const SignUp = () => {
         <div className="d-flex justify-content-center">
 
           {
-                auth.user ? <p>user logged in </p> :
+                auth.user ? <Redirect to="/"></Redirect> :
                 <GoogleButton onClick={auth.signInWithGoogle} />
-
           }
+
+          
+          
           
 
-          <div>{user.isSignedIn && <Redirect to="/"></Redirect>}</div>
+          <div></div>
         </div>
         <div className="d-flex justify-content-center">
           {user.error && <p id="hide" style={{ color: "red" }}>{(user.error)}</p>}

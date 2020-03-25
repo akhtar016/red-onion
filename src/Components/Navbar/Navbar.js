@@ -3,11 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { auth } from "firebase";
+import { useAuth } from "../Login/useAuth";
+
 
 const Navbar = () => {
 
+  const auth = useAuth();
+  console.log(auth.user);
   
+  
+
+
+
   return (
     <nav className="navbar navbar-expand navbar-light bg-white py-2 fixed-top">
       <div className="container">
@@ -27,18 +34,24 @@ const Navbar = () => {
           </li>
 
           <li className="nav-item">
-            <Link to="/login" className="nav-link">
-              Login
-            </Link>
+
+            {
+              auth.user ? <span style ={{color:'orange', fontWeight:"700"}}>Welcome {auth.user.name}</span> :
+              <Link to="/login" className="nav-link">Login</Link>
+            }
+            
           </li>
 
           <li className="nav-item">
-            <Link to="/signup">
-              {     auth.user ? <button className="btn btn-danger rounded-pill">Sign up</button> : 
-                    <button className="btn btn-danger rounded-pill">Sign up</button>
+           
+              {    
+
+                    auth.user ? <button onClick={auth.signOut} className="btn btn-danger rounded-pill">Sign Out</button> :
+                    
+                    <Link to="/signup"> <button className="btn btn-danger rounded-pill">Sign up</button></Link>
               }
               
-            </Link>
+        
           </li>
         </ul>
       </div>
