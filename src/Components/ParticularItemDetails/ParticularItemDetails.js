@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams} from "react-router-dom";
+import { useParams , Link} from "react-router-dom";
 import foods from "../../Data/food.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,20 +8,26 @@ import {
   faMinus
 } from "@fortawesome/free-solid-svg-icons";
 import "./ParticularItemDetails.css";
-import Navbar from "../Navbar/Navbar";
 
-const ParticularItemDetails = () => {
+
+
+const ParticularItemDetails = (props) => {
 
   const { key } = useParams();
   const food = foods.find(fd => fd.key === key);
 
   const [quantity, setQuantity] = useState(1);
 
+  const finalCartHandler = (food) => {
+    food.quantity = quantity;
+    props.cartHandler(food);
+  }
+
   
 
 
   return (
-    <div>
+    <div className="particularItemDetails">
       {/*<nav className="navbar navbar-expand-lg navbar-light bg-white container">
         <Link to="/">
           <img
@@ -33,10 +39,7 @@ const ParticularItemDetails = () => {
   </nav>*/}
 
 
-      <div className="navOnProductDetails">
-
-      <Navbar></Navbar>
-      </div>
+      
 
       <div className="food-details my-5 container">
         <div className="row">
@@ -75,9 +78,9 @@ const ParticularItemDetails = () => {
                 </button>
               </div>
             </div>
-            <button onClick={() => console.log("Item is added")}  className="btn btn-danger rounded-pill mb-2">
+            <Link to="/"><button onClick={() => finalCartHandler(food)}  className="btn btn-danger rounded-pill mb-2">
               <FontAwesomeIcon icon={faCartArrowDown} /> Add
-            </button>
+            </button></Link>
           </div>
           <div className="col-md-6">
             <img height="400px" src={food.imgLink} alt="" />

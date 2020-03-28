@@ -6,10 +6,12 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../Login/useAuth";
 
 
-const Navbar = () => {
+const Navbar = (props) => {
 
   const auth = useAuth();
-  console.log(auth.user);
+  //console.log(auth.user);
+
+  console.log(props.cart)
   
   
 
@@ -29,7 +31,8 @@ const Navbar = () => {
         <ul className="navbar-nav align-items-center">
           <li className="nav-item active">
             <Link to="/checkout" className="nav-link">
-              <FontAwesomeIcon className="cart-icon" icon={faCartPlus} /> 0
+              <FontAwesomeIcon className="cart-icon" icon={faCartPlus} /> 
+              <span className="badge bg-light">{props.cart.length}</span> 
             </Link>
           </li>
 

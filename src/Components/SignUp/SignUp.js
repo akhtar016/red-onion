@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import "./SignUp.css";
-import * as firebase from "firebase/app";
+
 import "firebase/auth";
 import GoogleButton from "react-google-button";
 import Auth from "../Login/useAuth";
@@ -11,20 +11,15 @@ import Auth from "../Login/useAuth";
 
 
 
+
+
+
 const SignUp = () => {
 
    const auth = Auth();
    console.log(auth.signInWithGoogle);
 
 
-
-
-
-
-
-
-
-   
 
   const [user, setUser] = useState({
     isSignedIn: false,
@@ -84,33 +79,52 @@ const SignUp = () => {
 
   //create account through input
 
-  const createAccount = event => {
-    if (user.isValid) {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(user.email, user.password)
-        .then(res => {
-          const createdUser = { ...user };
-          createdUser.isSignedIn = true;
-          createdUser.error = "";
-          setUser(createdUser);
-          console.log(res);
-        })
-        .catch(error => {
-          console.log(error);
-          const createdUser = { ...user };
-          createdUser.isSignedIn = false;
-          createdUser.error = error.message;
-          setUser(createdUser);
-        });
-    } else {
-      console.log("form is not valid", user);
+  // const createAccount = event => {
+  //   if (user.isValid && passMatch ) {
+  //     firebase
+  //       .auth()
+  //       .createUserWithEmailAndPassword(user.email, user.password)
+  //       .then(res => {
+  //         const createdUser = { ...user };
+  //         createdUser.isSignedIn = true;
+  //         createdUser.error = "";
+  //         setUser(createdUser);
+  //         console.log(res);
+  //       })
+  //       .catch(error => {
+  //         console.log(error);
+  //         const createdUser = { ...user };
+  //         createdUser.isSignedIn = false;
+  //         createdUser.error = error.message;
+  //         setUser(createdUser);
+  //       });
+  //   } else {
+  //     console.log("form is not valid", user);
+  //   }
+
+  //   event.preventDefault();
+  //   event.target.reset();
+  // };
+
+
+
+  // password match 
+
+   //password match 
+
+   const passMatch = () => {
+
+    const pass1 = document.getElementById("password").value;
+    const pass2 =  document.getElementById("confirm_password").value;
+    
+    if (pass1 !== pass2){
+
+      return alert("Password must be same")
     }
+  }
 
-    event.preventDefault();
-    event.target.reset();
-  };
 
+  //email input validation
   const is_valid_email = email => /(.+)@(.+){2,}\.(.+){2,}/.test(email);
   const hasNumber = input => /\d/.test(input);
 
@@ -140,15 +154,15 @@ const SignUp = () => {
 
 
 
-  const passMatch = () => {
+  // const passMatch = () => {
 
-    const pass1 = document.getElementById("password").value;
-    const pass2 =  document.getElementById("confirm_password").value;
+  //   const pass1 = document.getElementById("password").value;
+  //   const pass2 =  document.getElementById("confirm_password").value;
     
-    if (pass1 !== pass2){
-      alert("Password should be same")
-    }
-  }
+  //   if (pass1 !== pass2){
+  //     alert("Password should be same")
+  //   }
+  // }
 
   return (
     <div className="sign-Up">
@@ -160,7 +174,7 @@ const SignUp = () => {
           />
         </div>
 
-        <form onSubmit={createAccount} className="text-center">
+        <form onSubmit={auth.signUp} className="text-center">
           <input
             required
             type="text"
@@ -203,7 +217,7 @@ const SignUp = () => {
           />
           <br />
 
-          <button type="submit" onClick={passMatch} className="btn btn-danger myButton">
+          <button type="submit" className="btn btn-danger myButton">
             Sign Up
           </button>
         </form>
@@ -218,14 +232,14 @@ const SignUp = () => {
 
           {
                 auth.user ? <Redirect to="/"></Redirect> :
-                <GoogleButton onClick={auth.signInWithGoogle} />
+                <span>Or  <GoogleButton onClick={auth.signInWithGoogle} /></span>
           }
 
           
           
           
 
-          <div></div>
+        
         </div>
         <div className="d-flex justify-content-center">
           {user.error && <p id="hide" style={{ color: "red" }}>{(user.error)}</p>}

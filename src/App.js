@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./Components/Navbar/Navbar";
@@ -12,7 +12,33 @@ import TopBanner from "./Components/TopBanner/TopBanner";
 import { AuthContextProvider } from "./Components/Login/useAuth";
 
 
+
 function App() {
+
+  const [cart, setCart] = useState([]);
+
+  const cartHandler = (data) => {
+    // console.log(data)
+    const addedAlready = cart.find(cart => cart.key === data.key);
+    const newCart = [...cart, data]
+    setCart(newCart);
+    if(addedAlready){
+      const remainingCart = cart.filter(cart => cart.key !== data);
+      setCart(remainingCart);
+    }else{
+      const newCart = [...cart, data];
+      setCart(newCart);
+    }
+  }
+
+
+  // console.log(cart)
+  // console.log(cart.length);
+
+  
+
+  
+
   return (
     <div>
       <AuthContextProvider>
@@ -20,9 +46,9 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/">
-              <Navbar></Navbar>
+              <Navbar cart={cart}></Navbar>
               <TopBanner></TopBanner>
-              <AllFoods></AllFoods>
+              <AllFoods  cart={cart}></AllFoods>
             </Route>
 
             <Route path="/login">
@@ -34,7 +60,8 @@ function App() {
             </Route>
 
             <Route path="/food/:key">
-              <ParticularItemDetails></ParticularItemDetails>
+              <Navbar cart={cart}></Navbar>
+              <ParticularItemDetails cartHandler={cartHandler}></ParticularItemDetails>
             </Route>
 
             <Route path="*">

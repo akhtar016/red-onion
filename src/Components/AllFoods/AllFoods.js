@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import FoodItem from "../FoodItem/FoodItem";
 import "./AllFoods.css"
+import { Link} from "react-router-dom";
 
-const AllFoods = () => {
+const AllFoods = (props) => {
 
 
     /** I have used both like array and data from data folder which is in json format */
@@ -189,7 +190,12 @@ const AllFoods = () => {
           ))}
         </div>
         <div className="text-center">
-            <button disabled  className="btn btn-secondary">Check Out Your Food</button>
+            {
+              props.cart.length>0 ?
+              <Link to="/checkout"><button style ={{background:'salmon'}}  className="btn btn-secondary">Check Out Your Food</button></Link>
+              :
+              <button disabled  className="btn btn-secondary">Check Out Your Food</button>
+            }
         </div>
       </div>
     </section>

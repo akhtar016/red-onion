@@ -63,6 +63,10 @@ const Auth = () => {
 
 
 
+
+
+
+
  
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function(user){
@@ -77,8 +81,41 @@ const Auth = () => {
     });
   }, [])
 
+
+
+
+   // create account with email and password
+
+   const signUp = (email,password,name) => {
+    
+    firebase.auth().createUserWithEmailAndPassword(email,password,name)
+    .then(res => {
+      setUser(res.user);
+      console.log(res.user);
+      
+      
+    })
+    .catch(error=>{
+      
+      setUser({error: error.message});
+    })
+  }
+
+
+
+ 
+
+
+
+
+ 
+
+ 
+
+
   return {
     user,
+    signUp,
     signInWithGoogle,
     signOut
   };
