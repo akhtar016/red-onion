@@ -14,7 +14,7 @@ const AllFoods = (props) => {
 
 
   useEffect(()=>{
-    fetch('http://localhost:4200/food')
+    fetch('https://red-onion-restaurant-bd.herokuapp.com/food')
     .then(res => res.json())
     .then(data =>  {
       console.log("Data from database", data);

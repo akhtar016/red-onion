@@ -19,7 +19,7 @@ const ParticularItemDetails = (props) => {
   const [food, setFood] = useState([]);
     useEffect(() => {
         // const url = 'http://localhost:4200/food/' + key
-        const url = 'https://red-onion-restaurant.herokuapp.com/food/1'
+        const url = 'https://red-onion-restaurant-bd.herokuapp.com/food/' + key
         console.log(url);
         fetch(url)
             .then(res => res.json())
