@@ -10,15 +10,17 @@ import NotFound from "./Components/NotFound/NotFound";
 import ParticularItemDetails from "./Components/ParticularItemDetails/ParticularItemDetails";
 import TopBanner from "./Components/TopBanner/TopBanner";
 import { AuthContextProvider } from "./Components/Login/useAuth";
+import AddData from "./Components/AddData/AddData";
 
 
 
 function App() {
 
   const [cart, setCart] = useState([]);
+  
 
   const cartHandler = (data) => {
-    // console.log(data)
+    console.log(data)
     const addedAlready = cart.find(cart => cart.key === data.key);
     const newCart = [...cart, data]
     setCart(newCart);
@@ -62,6 +64,10 @@ function App() {
             <Route path="/food/:key">
               <Navbar cart={cart}></Navbar>
               <ParticularItemDetails cartHandler={cartHandler}></ParticularItemDetails>
+            </Route>
+
+            <Route path="/addData">
+              <AddData></AddData>
             </Route>
 
             <Route path="*">
