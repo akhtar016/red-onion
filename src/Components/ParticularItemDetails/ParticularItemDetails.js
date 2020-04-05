@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams , Link} from "react-router-dom";
-import foods from "../../Data/food.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartArrowDown,
@@ -11,10 +10,26 @@ import "./ParticularItemDetails.css";
 
 
 
+
 const ParticularItemDetails = (props) => {
 
   const { key } = useParams();
-  const food = foods.find(fd => fd.key === key);
+
+  //
+  const [food, setFood] = useState([]);
+    useEffect(() => {
+        // const url = 'http://localhost:4200/food/' + key
+        const url = 'https://red-onion-restaurant.herokuapp.com/food/1'
+        console.log(url);
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                console.log("data from mongodb", data);
+                setFood(data)
+            })
+    }, [key])
+
+  // const food = foods.find(fd => fd.key === key);
 
   const [quantity, setQuantity] = useState(1);
 
@@ -23,24 +38,8 @@ const ParticularItemDetails = (props) => {
     props.cartHandler(food);
   }
 
-  
-
-
   return (
     <div className="particularItemDetails">
-      {/*<nav className="navbar navbar-expand-lg navbar-light bg-white container">
-        <Link to="/">
-          <img
-            src="https://res.cloudinary.com/dllb2cjw6/image/upload/v1584737489/logo2_ikwqnv.png"
-            alt=""
-            height="50px"
-          />
-        </Link>
-  </nav>*/}
-
-
-      
-
       <div className="food-details my-5 container">
         <div className="row">
           <div className="col-md-6 pr-md-4">

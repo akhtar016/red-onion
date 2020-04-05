@@ -14,7 +14,7 @@ const AllFoods = (props) => {
 
 
   useEffect(()=>{
-    fetch('http://localhost:4200/foods')
+    fetch('http://localhost:4200/food')
     .then(res => res.json())
     .then(data =>  {
       console.log("Data from database", data);
@@ -23,7 +23,7 @@ const AllFoods = (props) => {
 
   },[])
 
-    food.sort(function() { return 0.5 - Math.random() });
+    //food.sort(function() { return 0.5 - Math.random() });
 
 
   const selectedFoods = food.filter (food => food.type === foodType)
