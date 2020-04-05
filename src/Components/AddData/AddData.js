@@ -27,7 +27,7 @@ const AddData = () => {
       <div className="row justify-content-center" style={style}>
         <div className="col-md-12 text-center">
           <h1>Add Data to Database</h1>
-          <button onClick={handleAddInventory}>Add</button>
+          <button onClick={handleAddInventory} disabled>Add</button>
         </div>
       </div>
     </div>
