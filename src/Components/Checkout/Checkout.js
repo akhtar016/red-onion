@@ -24,6 +24,7 @@ const Checkout = (props) => {
             <form className="ship-form" onSubmit={handleSubmit(onSubmit)}>
               <input
                 name="name"
+                defaultValue={auth.user.name}
                 ref={register({ required: true })}
                 placeholder="Name"
               />
@@ -32,6 +33,7 @@ const Checkout = (props) => {
   
               <input
                 name="email"
+                defaultValue={auth.user.email}
                 ref={register({ required: true })}
                 placeholder="Email"
               />

@@ -9,13 +9,6 @@ import { useAuth } from "../Login/useAuth";
 const Navbar = (props) => {
 
   const auth = useAuth();
-  //console.log(auth.user);
-
-  console.log(props.cart)
-  
-  
-
-
 
   return (
     <nav className="navbar navbar-expand navbar-light bg-white py-2 fixed-top">
@@ -30,10 +23,15 @@ const Navbar = (props) => {
 
         <ul className="navbar-nav align-items-center">
           <li className="nav-item active">
-            <Link to="/checkout" className="nav-link">
+           { auth.user && props.cart.length> 0 ? <Link to="/checkout" className="nav-link">
               <FontAwesomeIcon className="cart-icon" icon={faCartPlus} /> 
               <span className="badge bg-light">{props.cart.length}</span> 
             </Link>
+            :
+            <div className="nav-link">
+              <FontAwesomeIcon className="cart-icon" icon={faCartPlus} /> 
+              <span className="badge bg-light">{props.cart.length}</span> 
+            </div>}
           </li>
 
           <li className="nav-item">

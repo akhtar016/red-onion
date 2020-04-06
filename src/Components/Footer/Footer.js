@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css'
-import { Link } from 'react-router-dom';
+
 
 const Footer = () => {
     return (
@@ -12,28 +12,28 @@ const Footer = () => {
                     </div>
                     <div className="col-md-3">
                         <ul className="list-unstyled">
-                            <li><Link to="/">About Online Food</Link></li>
-                            <li><Link to="/">Read Our Blog</Link></li>
-                            <li><Link to="/">Sign up to deliver</Link></li>
-                            <li><Link to="/">Add your restaurant</Link></li>
+                            <li>About Online Food</li>
+                            <li>Read Our Blog</li>
+                            <li>Sign up to deliver</li>
+                            <li>Add your restaurant</li>
                         </ul>
                     </div>
                     <div className="col-md-3">
                         <ul className="list-unstyled">
-                            <li><Link to="/">Get Help</Link></li>
-                            <li><Link to="/">Read FAQ</Link></li>
-                            <li><Link to="/">View All Cities</Link></li>
-                            <li><Link to="/">Restaurants near me</Link></li>
+                            <li>Get Help</li>
+                            <li>Read FAQ</li>
+                            <li>View All Cities</li>
+                            <li>Restaurants near me</li>
                         </ul>
                     </div>
                 </div>
 
                 <div className="footer-bottom d-flex justify-content-between align-items-center">
-                    <small className="text-secondary">Copyright &copy;  2020 Red Onion Restaurant </small>
+                    <small className="text-secondary"><span id="copyright">Copyright &copy;  2020 Red Onion Restaurant</span>  </small>
                     <ul className="list-inline">
-                        <li className="list-inline-item ml-3"><a href="/">Privacy Policy</a></li>
-                        <li className="list-inline-item  ml-3"><a href="/">Terms of Use</a></li>
-                        <li className="list-inline-item  ml-3"><a href="/">Pricing</a></li>
+                        <li className="list-inline-item ml-3">Privacy Policy</li>
+                        <li className="list-inline-item  ml-3">Terms of Us</li>
+                        <li className="list-inline-item  ml-3">Pricing</li>
                     </ul>
 
                 </div>

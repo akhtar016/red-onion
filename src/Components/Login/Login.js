@@ -1,11 +1,14 @@
 import React from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
+import Auth from "./useAuth";
 
 
 
 
 const Login = () => {
+
+  const auth = Auth();
   return (
     <div className="login">
       <div className="container">
@@ -16,7 +19,7 @@ const Login = () => {
           />
         </div>
 
-        <form action="" className="text-center">
+        <form onSubmit={auth.signIn} className="text-center">
           <input
             type="email"
             name="email"
@@ -33,7 +36,7 @@ const Login = () => {
             className="input"
           />
           <br />
-          <button className="btn btn-danger myButton">Log in</button>
+          <button type="submit" className="btn btn-danger myButton">Log in</button>
         </form>
 
         <div >

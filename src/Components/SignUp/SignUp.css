@@ -1,16 +1,21 @@
+
 .sign-Up{
     background-image: url("https://res.cloudinary.com/dllb2cjw6/image/upload/v1584914956/signup-bg_bhg37l.png");
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: bottom;
     height: 100vh;
+    box-sizing: content-box;
     
 }
+
+
 .sign-Up img{
     height: 80px;
     margin-top: 50px;
     margin-bottom: 30px;
 }
+
 
 .input{
     padding: 10px 10px ;

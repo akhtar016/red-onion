@@ -55,7 +55,7 @@ const ParticularItemDetails = (props) => {
 
               <div className="cart-controller ml-3 btn">
                 <button
-                  class="btn btn-default myBtn"
+                  className="btn btn-default myBtn"
                   onClick={() => {
                     
                     if (quantity > 1) {
@@ -70,7 +70,7 @@ const ParticularItemDetails = (props) => {
                 <span className="text">{quantity}</span>
 
                 <button
-                  class="btn btn-default myBtn"
+                  className="btn btn-default myBtn"
                   onClick={() => setQuantity(quantity + 1)}
                 >
                   <FontAwesomeIcon icon={faPlus} />

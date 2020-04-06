@@ -1,168 +1,58 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import "./SignUp.css";
-
 import "firebase/auth";
 import GoogleButton from "react-google-button";
 import Auth from "../Login/useAuth";
+
 
 
 // Initialize Firebase
 
 
 
-
-
-
 const SignUp = () => {
 
    const auth = Auth();
-   console.log(auth.signInWithGoogle);
 
+  // const [user, setUser] = useState({
+  //   isSignedIn: false,
+  //   name: "",
+  //   email: "",
+  //   photoURL: ""
+  // });
 
-
-  const [user, setUser] = useState({
-    isSignedIn: false,
-    name: "",
-    email: "",
-    photoURL: ""
-  });
-
-  // login with google starts
-
-  // const provider = new firebase.auth.GoogleAuthProvider();
-
-  // const handleSignIn = () => {
-  //   firebase
-  //     .auth()
-  //     .signInWithPopup(provider)
-  //     .then(result => {
-  //       const { displayName, photoURL, email } = result.user;
-
-  //       const signInUser = {
-  //         isSignedIn: true,
-  //         name: displayName,
-  //         email: email,
-  //         photo: photoURL
-  //       };
-
-  //       setUser(signInUser);
-  //       console.log(displayName, email, photoURL);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //       console.log(error.message);
-  //     });
-
-  //   console.log("Google Button is Clicked");
-  // };
-
-  // const handleSignOut = () => {
-  //   firebase
-  //     .auth()
-  //     .signOut()
-  //     .then(response => {
-  //       const signOutUser = {
-  //         isSignedIn: false,
-  //         name: "",
-  //         photo: "",
-  //         email: "",
-  //         password: "",
-  //         isValid: "false",
-  //         error: ""
-  //       };
-
-  //       setUser(signOutUser);
-  //     })
-  //     .catch(error => {});
-  // };
-
-  //create account through input
-
-  // const createAccount = event => {
-  //   if (user.isValid && passMatch ) {
-  //     firebase
-  //       .auth()
-  //       .createUserWithEmailAndPassword(user.email, user.password)
-  //       .then(res => {
-  //         const createdUser = { ...user };
-  //         createdUser.isSignedIn = true;
-  //         createdUser.error = "";
-  //         setUser(createdUser);
-  //         console.log(res);
-  //       })
-  //       .catch(error => {
-  //         console.log(error);
-  //         const createdUser = { ...user };
-  //         createdUser.isSignedIn = false;
-  //         createdUser.error = error.message;
-  //         setUser(createdUser);
-  //       });
-  //   } else {
-  //     console.log("form is not valid", user);
-  //   }
-
-  //   event.preventDefault();
-  //   event.target.reset();
-  // };
-
-
-
-  // password match 
-
-   //password match 
-
-   const passMatch = () => {
-
-    const pass1 = document.getElementById("password").value;
-    const pass2 =  document.getElementById("confirm_password").value;
-    
-    if (pass1 !== pass2){
-
-      return alert("Password must be same")
-    }
-  }
-
+  
 
   //email input validation
-  const is_valid_email = email => /(.+)@(.+){2,}\.(.+){2,}/.test(email);
-  const hasNumber = input => /\d/.test(input);
+  // const is_valid_email = email => /(.+)@(.+){2,}\.(.+){2,}/.test(email);
+  // const hasNumber = input => /\d/.test(input);
 
-  const handleChange = event => {
-    const newUserInfo = {
-      ...user
-    };
+  // const handleChange = event => {
+  //   const newUserInfo = {
+      
+  //   };
+  
 
     //perform validation
 
-    let isValid = true;
+  //   let isValid = true;
 
-    if (event.target.email === "email") {
-      isValid = is_valid_email(event.target.value);
-    }
-    if (event.target.name === "password") {
-      isValid = event.target.value.length >= 8 && hasNumber(event.target.value);
-    } else {
-    }
-
-    newUserInfo[event.target.name] = event.target.value;
-
-    newUserInfo.isValid = isValid;
-    setUser(newUserInfo);
-  };
-
-
-
-
-  // const passMatch = () => {
-
-  //   const pass1 = document.getElementById("password").value;
-  //   const pass2 =  document.getElementById("confirm_password").value;
-    
-  //   if (pass1 !== pass2){
-  //     alert("Password should be same")
+  //   if (event.target.email === "email") {
+  //     isValid = is_valid_email(event.target.value);
   //   }
-  // }
+  //   if (event.target.name === "password") {
+  //     isValid = event.target.value.length >= 8 && hasNumber(event.target.value);
+  //   } else {
+  //   }
+
+  //   newUserInfo[event.target.name] = event.target.value;
+
+  //   newUserInfo.isValid = isValid;
+  //   setUser(newUserInfo);
+  //  };
+
+
 
   return (
     <div className="sign-Up">
@@ -174,19 +64,22 @@ const SignUp = () => {
           />
         </div>
 
-        <form onSubmit={auth.signUp} className="text-center">
+        <form onSubmit={()=> {alert("SignUp is currently unavailable. You can login with Google Account instead.")}} className="text-center">
+          
+
           <input
             required
             type="text"
-            onBlur={handleChange}
+            // onBlur={handleChange}
             name="name"
             id="email"
             placeholder="Name"
             className="input"
           />
+          
           <br />
           <input
-            onBlur={handleChange}
+            // onBlur={handleChange}
             required
             type="email"
             name="email"
@@ -196,7 +89,7 @@ const SignUp = () => {
           />
           <br />
           <input
-            onBlur={handleChange}
+            // onBlur={handleChange}
             type="password"
             name="password"
             id="password"
@@ -207,7 +100,7 @@ const SignUp = () => {
           <br />
 
           <input
-            onBlur={handleChange}
+            // onBlur={handleChange}
             type="password"
             name="password"
             id="confirm_password"
@@ -216,7 +109,7 @@ const SignUp = () => {
             required
           />
           <br />
-
+          
           <button type="submit" className="btn btn-danger myButton">
             Sign Up
           </button>
@@ -235,18 +128,8 @@ const SignUp = () => {
                 <span>Or  <GoogleButton onClick={auth.signInWithGoogle} /></span>
           }
 
-          
-          
-          
-
-        
         </div>
-        <div className="d-flex justify-content-center">
-          {user.error && <p id="hide" style={{ color: "red" }}>{(user.error)}</p>}
-          
-
-
-        </div>
+      
       </div>
     </div>
   );

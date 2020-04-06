@@ -3,8 +3,12 @@ import FoodItem from "../FoodItem/FoodItem";
 import "./AllFoods.css"
 import { Link} from "react-router-dom";
 import { useEffect } from "react";
+import Auth from "../Login/useAuth";
 
 const AllFoods = (props) => {
+
+
+  const auth =Auth();
 
 
 
@@ -17,11 +21,12 @@ const AllFoods = (props) => {
     fetch('https://red-onion-restaurant-bd.herokuapp.com/food')
     .then(res => res.json())
     .then(data =>  {
-      console.log("Data from database", data);
+      //console.log("Data from database", data);
       setFood(data)
     })
 
   },[])
+  
 
     //food.sort(function() { return 0.5 - Math.random() });
 
@@ -47,16 +52,23 @@ const AllFoods = (props) => {
           </nav>
         <div className="row my-5">
           {selectedFoods.map(food => (
-            <FoodItem food={food}></FoodItem>
+            <FoodItem 
+            key={food.key}
+            food={food}></FoodItem>
           ))}
         </div>
         <div className="text-center">
             {
-              props.cart.length>0 ?
+              props.cart.length>0 && auth.user ?  
               <Link to="/checkout"><button style ={{background:'salmon'}}  className="btn btn-secondary">Check Out Your Food</button></Link>
-              :
-              <button disabled  className="btn btn-secondary">Check Out Your Food</button>
+              : auth.user === null && props.cart.length > 0 ?
+               <Link to="/login"><button style ={{background:'salmon'}}  className="btn btn-secondary">Check Out Your Food</button></Link> 
+              : 
+              <button style ={{background:'gray'}} disabled  className="btn btn-secondary">Check Out Your Food</button>
+              
             }
+
+            
         </div>
       </div>
     </section>

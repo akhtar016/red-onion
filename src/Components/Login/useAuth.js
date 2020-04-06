@@ -30,44 +30,9 @@ const getUser = user => {
 const Auth = () => {
   const [user, setUser] = useState(null);
 
-  const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then(res => {
-       
-        const signedInUser = getUser(res.user);
-        setUser(signedInUser);
-        return res.user;
-      })
-      .catch(err => {
-        console.log(err);
-        setUser(null);
-        return err.message;
-      });
-  };
-
-  //sign out function
-
-  const signOut = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(function() {
-        setUser(null);
-      })
-      .catch(function(error) {});
-  };
 
 
-
-
-
-
-
- 
+//On state changed
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function(user){
       if(user){
@@ -83,40 +48,97 @@ const Auth = () => {
 
 
 
+  //signInWithGoogle
 
-   // create account with email and password
+  const signInWithGoogle = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
 
-   const signUp = (email,password,name) => {
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(res => {
+        const signedInUser = getUser(res.user);
+        setUser(signedInUser);
+        return res.user;
+      })
+      .catch(err => {
+        console.log(err);
+        setUser(null);
+        return err.message;
+      });
+  };
+
+  // create account with email and password
+
+  const signUp = (email, password) => {
     
-    firebase.auth().createUserWithEmailAndPassword(email,password,name)
+    return firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(res => {
-      setUser(res.user);
-      console.log(res.user);
       
-      
-    })
+      console.log(res);
+      // const signInUser = getUser(res.user);
+      // setUser(signInUser);
+      })
     .catch(error=>{
-      
-      setUser({error: error.message});
+      // setUser(null)
+     console.log(error);
+
+    
     })
+    
+    
   }
 
 
 
+  // sign in  existing users
+  const signIn = (email,password) => {
+  firebase.auth().signInWithEmailAndPassword(email, password)
+  .then(res =>{
+    setUser(res.user);
+    console.log(res.user);
+  })
+  .catch(error=> {
+    // Handle Errors here.
+    //const errorCode = error.code;
+    const errorMessage = error.message;
+    setUser({error:errorMessage})
+    
+    // ...
+  })
+}
+
+
+
+
+
+
+  //sign out function
+
+  const signOut = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(function() {
+        setUser(null);
+      })
+      .catch(function(error) {});
+  };
+ 
  
 
 
 
 
- 
+   
 
- 
 
 
   return {
     user,
     signUp,
     signInWithGoogle,
+    signIn,
     signOut
   };
 };
