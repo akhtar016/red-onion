@@ -10,9 +10,13 @@ This website is deployed in Firebase.
 
 ## Screenshots
 ![alt text](https://i.ibb.co/pwmbhDz/red-onion-1.png)
+
 ![alt text](https://i.ibb.co/qYJrDnS/screenshot-red-onion-2.png)
+
 ![alt text](https://i.ibb.co/8bP7Vdk/screenshot-red-onion-3.png)
+
 ![alt text](https://i.ibb.co/VxdphHJ/screenshot-red-onion-4.png)
+
 ![alt text](https://i.ibb.co/pZXqKxb/screenshot-red-onion-5.png)
 
 ## Tech/framework used
